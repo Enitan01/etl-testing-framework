@@ -1,12 +1,25 @@
 import pandas as pd
 
-def standardise_dates(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Converts date columns to a standard YYYY-MM-DD format.
-    Assumes a column named 'date' exists in the dataset.
-    """
-    if 'date' in df.columns:
-        df['date'] = pd.to_datetime(df['date'], errors='coerce').dt.strftime('%Y-%m-%d')
+def standardise_dates(df):
+    df["date"] = pd.to_datetime(
+        df["date"],
+        errors="coerce",
+        format=None
+    )
+
+    # Fix ambiguous formats manually
+    for i, value in enumerate(df["date"]):
+        if pd.isna(value):
+            continue
+        original = df["date"].iloc[i]
+        if isinstance(original, str) and "-" in original:
+            # Interpret as MM-DD-YYYY
+            try:
+                df.loc[i, "date"] = pd.to_datetime(original, format="%m-%d-%Y")
+            except:
+                pass
+
+    df["date"] = df["date"].dt.strftime("%Y-%m-%d")
     return df
 
 
