@@ -1,4 +1,7 @@
 # etl-testing-framework
+
+![CI](https://github.com/Enitan01/etl-testing-framework/actions/workflows/tests.yml/badge.svg)
+
 A lightweight, end‑to‑end ETL testing framework demonstrating ingestion validation, transformation testing, data‑quality checks, and source‑to‑target verification. This framework simulates a real-world data pipeline and demonstrates how to validate each stage using Python and PyTest.
 
 ## 📁 Project Structure
