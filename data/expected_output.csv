@@ -1,1 +1,6 @@
+id,date,category,status_code,status,amount,high_value
+1,2024-01-01,A,1,Active,50,False
+2,2024-01-02,Unknown,0,Inactive,150,True
+3,2024-03-05,B,1,Active,200,True
+4,,C,0,Inactive,75,False
 
