@@ -24,8 +24,10 @@ def standardise_dates(df):
 
         parsed.append(pd.NaT)
 
-    df["date"] = pd.to_datetime(parsed).dt.strftime("%Y-%m-%d")
+    # Convert parsed list into a Series so .dt works
+    df["date"] = pd.Series(parsed).dt.strftime("%Y-%m-%d")
     return df
+
 
 
 
