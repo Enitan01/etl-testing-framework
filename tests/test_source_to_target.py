@@ -31,7 +31,7 @@ source_df = pd.DataFrame({
     })
 
     # Target has a mismatch on id=3
-    target_df = pd.DataFrame({
+target_df = pd.DataFrame({
         "id": [1, 2, 3],
         "value": ["A", "B", "X"]
     })
