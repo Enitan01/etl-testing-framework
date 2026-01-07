@@ -50,4 +50,30 @@ python -c "from etl.pipeline import run_pipeline; import pandas as pd; print(run
 This command loads the source CSV, applies all transformations, and prints the curated output.
 
 
+## 🧪 How to Run Tests
+
+Install all dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the full test suite
+
+```bash 
+pytest -v
+```
+
+Run a specific test file
+
+```bash
+pytest tests/test_transformations.py -v
+```
+
+Run a single test inside a file
+
+```bash
+pytest tests/test_data_quality.py::test_no_nulls -v
+```
+
 
