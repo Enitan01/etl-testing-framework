@@ -1,40 +1,22 @@
 import pandas as pd
-from utils.validators import validate_source_to_target
+from etl.pipeline import run_pipeline
 
-def test_source_to_target_match():
-    """
-    Ensures that our source and target datasets match on key columns.
-    """
 
-    # Simulated source data
-    source_df = pd.DataFrame({
-        "id": [1, 2, 3],
-        "value": ["A", "B", "C"]
-    })
+def test_source_to_target_reconciliation():
+    # Run the pipeline
+    result_df = run_pipeline("data/source_data.csv")
 
-    # Simulated target data (matching)
+    # Expected output
     target_df = pd.DataFrame({
         "id": [1, 2, 3],
-        "value": ["A", "B", "C"]
+        "name": ["Alice", "Bob", "Charlie"],
+        "age": [25, 30, 35],
+        "age_plus_ten": [35, 40, 45]
     })
 
-    assert validate_source_to_target(source_df, target_df, ["id", "value"])
+    # Reset index for comparison
+    result_df = result_df.reset_index(drop=True)
+    target_df = target_df.reset_index(drop=True)
 
-
-def test_source_to_target_mismatch():
-    """
-    Ensures that mismatched datasets fail validation.
-    """
-source_df = pd.DataFrame({
-        "id": [1, 2, 3],
-        "value": ["A", "B", "C"]
-    })
-
-    # Target has a mismatch on id=3
-target_df = pd.DataFrame({
-        "id": [1, 2, 3],
-        "value": ["A", "B", "X"]
-    })
-
-    assert validate_source_to_target(source_df, target_df, ["id", "value"]) is False
-
+    # Compare DataFrames
+    pd.testing.assert_frame_equal(result_df, target_df)
