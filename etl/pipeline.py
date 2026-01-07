@@ -6,16 +6,10 @@ from .transformations import (
     derive_fields
 )
 
-def run_pipeline(source_path: str) -> pd.DataFrame:
-    """
-    Simulates a simple ETL pipeline:
-    1. Read raw source data
-    2. Apply transformation functions
-    3. Return curated dataframe
-    """
 
+def run_pipeline(path):
     # Ingestion
-    df = pd.read_csv(source_path)
+    df = pd.read_csv(path)
 
     # Transformations
     df = standardise_dates(df)
@@ -23,6 +17,7 @@ def run_pipeline(source_path: str) -> pd.DataFrame:
     df = map_codes(df)
     df = derive_fields(df)
 
+    # Keep only the expected columns
+    df = df[["id", "name", "age", "age_plus_ten"]]
+
     return df
-
-
