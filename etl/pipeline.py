@@ -21,4 +21,3 @@ def run_pipeline(path):
         return df
 
     return df
-
