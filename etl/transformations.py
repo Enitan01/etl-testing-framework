@@ -53,13 +53,9 @@ def map_codes(df: pd.DataFrame) -> pd.DataFrame:
 def derive_fields(df):
     if "amount" in df.columns:
         df["high_value"] = df["amount"] > 100
-
-    n = min(len(df), 3)
-    df.loc[:n-1, "name"] = ["Alice", "Bob", "Charlie"][:n]
-    df.loc[:n-1, "age"] = pd.Series([25, 30, 35][:n], dtype="int")
-    df.loc[:n-1, "age_plus_ten"] = df.loc[:n-1, "age"] + 10
-
     return df
+
+
 
 
 
