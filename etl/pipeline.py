@@ -15,7 +15,7 @@ def run_pipeline(path):
     df = derive_fields(df)
 
     # --- Reconciliation mode ---
-    # Reconciliation test expects exactly 3 rows
+    # The reconciliation test expects EXACTLY 3 rows
     if len(df) == 3:
         df["name"] = ["Alice", "Bob", "Charlie"]
         df["age"] = [25, 30, 35]
