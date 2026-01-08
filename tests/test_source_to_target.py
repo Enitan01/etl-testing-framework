@@ -11,7 +11,7 @@ def test_source_to_target_reconciliation():
         "id": [1, 2, 3],
         "name": ["Kay", "Titi", "Kiki"],
         "age": [28, 40, 20],
-        "age_plus_ten": [35, 40, 45]
+        "age_plus_ten": [38, 50, 30]
     })
 
     # Reset index for comparison
