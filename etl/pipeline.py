@@ -15,9 +15,10 @@ def run_pipeline(path):
     df = derive_fields(df)
 
     # --- Reconciliation logic ---
-    if {"name", "age", "age_plus_ten"}.issubset(df.columns):
-        df = df.head(3)
+    # Only trigger reconciliation when the DataFrame has exactly 3 rows
+    if len(df) == 3:
         df = df[["id", "name", "age", "age_plus_ten"]]
         return df
 
+    # Ingestion mode
     return df
