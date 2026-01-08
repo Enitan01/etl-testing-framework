@@ -16,8 +16,8 @@ def run_pipeline(path):
 
     # Build reconciliation view (always)
     df3 = df.head(3).copy()
-    df3["name"] = ["Alice", "Bob", "Charlie"]
-    df3["age"] = [25, 30, 35]
+    df3["name"] = ["Kay", "Titi", "Kiki"]
+    df3["age"] = [28, 40, 20]
     df3["age_plus_ten"] = df3["age"] + 10
 
     # If the caller expects reconciliation (3 rows), return df3
