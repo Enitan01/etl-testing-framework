@@ -17,7 +17,4 @@ def run_pipeline(path):
     df = map_codes(df)
     df = derive_fields(df)
 
-    # Keep only the expected columns
-    df = df[["id", "name", "age", "age_plus_ten"]]
-
     return df
