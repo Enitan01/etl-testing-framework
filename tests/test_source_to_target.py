@@ -10,7 +10,7 @@ def test_source_to_target_reconciliation():
     target_df = pd.DataFrame({
         "id": [1, 2, 3],
         "name": ["Kay", "Titi", "Kiki"],
-        "age": [25, 30, 35],
+        "age": [28, 40, 20],
         "age_plus_ten": [35, 40, 45]
     })
 
